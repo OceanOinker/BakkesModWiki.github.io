@@ -19,12 +19,17 @@ author: Martinn
 myImage = std::make_shared<ImageWrapper>(gameWrapper->GetDataFolder() / "MyPluginFolder" / "MyImage.png", true, true);
 {{< / highlight >}}
 
-2. Load the resource if you didn't use the optional args.
+2. Make sure to null check.
+ {{< highlight cpp "linenos=table" >}}
+if (!myImage) { return; }
+{{< / highlight >}}
+ 
+3. Load the resource if you didn't use the optional args.
 {{< highlight cpp "linenos=table" >}}
 myImage->LoadForCanvas();
 {{< /highlight >}}
 
-3. 
+4. 
     a. Pass it to the canvas wrapper in a drawable callback
 {{< highlight cpp "linenos=table" >}}
 canvas.DrawTexture(testImage.get(), 1); 
